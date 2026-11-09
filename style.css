@@ -1,0 +1,20 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: #fff;
+}
+
+main {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.notice {
+  display: block;
+  width: min(640px, 100%);
+  height: auto;
+}
