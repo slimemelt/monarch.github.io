@@ -4,39 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>one moment…</title>
+<title>Monarch</title>
 <link rel="icon" href="/assets/favicon.png" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@300;900&display=swap">
-<style>
-  html, body { height: 100%; margin: 0; background: #f9b10f; color: #131095; font-family: "Londrina Solid", "Arial Narrow", sans-serif; }
-  main { min-height: 100%; display: grid; place-content: center; justify-items: center; gap: 6px; padding: 24px; text-align: center; }
-  img { width: 88px; height: 88px; margin-bottom: 10px; }
-  h1 { margin: 0; font-size: clamp(56px, 14vw, 120px); font-weight: 900; line-height: .9; text-transform: uppercase; }
-  p { max-width: 20em; margin: 0; font-size: clamp(22px, 5vw, 30px); font-weight: 300; line-height: 1.05; color: #e50081; }
-  a { display: block; margin-top: 12px; color: #131095; font-weight: 900; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 3px; }
-</style>
+<style>html,body{height:100%;margin:0;background:#f9b10f}</style>
 </head>
 <body>
-<main>
-  <img src="/assets/favicon.png" alt="">
-  <h1 id="title">one moment…</h1>
-  <p id="detail"></p>
-</main>
 <script type="module">
-  // GitHub Pages serves this file for any path that doesn't exist. If the path is a short link
-  // saved in the admin (for example /discord), forward the visitor; otherwise show "not found".
+  // GitHub Pages serves this file for any path that doesn't exist. A path saved as a short link
+  // in the admin is forwarded; anything else goes to the homepage.
   const API = "https://api.bloomnetworks.net";
 
   const host = location.hostname.replace(/^www\./, "");
   const path = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, "").toLowerCase();
-
-  function showNotFound() {
-    document.title = "Page not found";
-    document.title = "nothing here";
-    document.getElementById("title").textContent = "nothing here";
-    document.getElementById("detail").innerHTML = 'either this page was deleted or moved or ya don’t know where you’re going.<a href="/">take me home</a>';
-  }
 
   async function findDestination() {
     const response = await fetch(`${API}/redirects`);
@@ -46,11 +25,9 @@
   }
 
   try {
-    const destination = await findDestination();
-    if (destination) location.replace(destination);
-    else showNotFound();
+    location.replace((await findDestination()) || "/");
   } catch {
-    showNotFound();
+    location.replace("/");
   }
 </script>
 </body>
