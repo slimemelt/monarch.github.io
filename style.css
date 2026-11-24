@@ -16,14 +16,6 @@ body {
   transform: translate(-50%, -50%);
 }
 
-@media (max-aspect-ratio: 1/1) {
-  .early {
-    width: 340vw;
-    -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
-    mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
-  }
-}
-
 .ring {
   position: fixed;
   right: 0;
@@ -33,6 +25,18 @@ body {
   height: auto;
   overflow: visible;
   animation: drift-ring 23s ease-in-out infinite alternate;
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .early {
+    width: 340vw;
+    -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  }
+
+  .ring {
+    width: 72vw;
+  }
 }
 
 .shape {
@@ -65,12 +69,6 @@ body {
 @keyframes drift-quad {
   50% { transform: translate(-300px, 260px) rotate(4deg); }
   100% { transform: translate(-80px, 420px) rotate(-3deg); }
-}
-
-@media (max-aspect-ratio: 1/1) {
-  .ring {
-    width: 72vw;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
