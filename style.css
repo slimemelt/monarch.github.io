@@ -24,6 +24,17 @@ body {
   }
 }
 
+.ring {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: calc(max(100vw, 100dvh * 1.8525) * 0.2015);
+  height: auto;
+  overflow: visible;
+  animation: drift-ring 23s ease-in-out infinite alternate;
+}
+
 .shape {
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
@@ -33,11 +44,6 @@ body {
 .shape-circle {
   animation-name: drift-circle;
   animation-duration: 17s;
-}
-
-.shape-ring {
-  animation-name: drift-ring;
-  animation-duration: 23s;
 }
 
 .shape-quad {
@@ -52,8 +58,8 @@ body {
 }
 
 @keyframes drift-ring {
-  50% { transform: translate(-340px, -150px); }
-  100% { transform: translate(-120px, -420px); }
+  50% { transform: translate(-3vw, -4vh); }
+  100% { transform: translate(-1vw, -9vh); }
 }
 
 @keyframes drift-quad {
@@ -61,6 +67,13 @@ body {
   100% { transform: translate(-80px, 420px) rotate(-3deg); }
 }
 
+@media (max-aspect-ratio: 1/1) {
+  .ring {
+    width: 72vw;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .shape { animation: none; }
+  .shape,
+  .ring { animation: none; }
 }
