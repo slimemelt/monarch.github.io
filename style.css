@@ -23,3 +23,44 @@ body {
     mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
   }
 }
+
+.shape {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.shape-circle {
+  animation-name: drift-circle;
+  animation-duration: 17s;
+}
+
+.shape-ring {
+  animation-name: drift-ring;
+  animation-duration: 23s;
+}
+
+.shape-quad {
+  transform-origin: 3900px 600px;
+  animation-name: drift-quad;
+  animation-duration: 29s;
+}
+
+@keyframes drift-circle {
+  50% { transform: translate(380px, 120px); }
+  100% { transform: translate(220px, 430px); }
+}
+
+@keyframes drift-ring {
+  50% { transform: translate(-340px, -150px); }
+  100% { transform: translate(-120px, -420px); }
+}
+
+@keyframes drift-quad {
+  50% { transform: translate(-300px, 260px) rotate(4deg); }
+  100% { transform: translate(-80px, 420px) rotate(-3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shape { animation: none; }
+}
