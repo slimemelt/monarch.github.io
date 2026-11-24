@@ -6,7 +6,8 @@
 <meta name="robots" content="noindex">
 <title>Monarch</title>
 <link rel="icon" href="/assets/favicon.png" type="image/png">
-<style>html,body{height:100%;margin:0;background:#f9b10f}</style>
+<style>html,body{height:100%;margin:0;background:#000}</style>
+<noscript><meta http-equiv="refresh" content="0;url=/"></noscript>
 </head>
 <body>
 <script type="module">
@@ -16,7 +17,7 @@
   const path = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, "").toLowerCase();
 
   async function findDestination() {
-    const response = await fetch(`${API}/redirects`);
+    const response = await fetch(`${API}/redirects`, { signal: AbortSignal.timeout(2500) });
     if (!response.ok) throw new Error(`redirects failed (${response.status})`);
     const { redirects } = await response.json();
     return redirects.find((row) => row.host === host && row.path === path)?.url;

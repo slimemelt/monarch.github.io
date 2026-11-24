@@ -2,19 +2,24 @@ html,
 body {
   height: 100%;
   margin: 0;
-  background: #fff;
+  overflow: hidden;
+  background: linear-gradient(#000 50%, #006345 50%);
 }
 
-main {
-  min-height: 100%;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  box-sizing: border-box;
-}
-
-.notice {
+.early {
+  position: fixed;
+  left: 50%;
+  top: 50%;
   display: block;
-  width: min(640px, 100%);
+  width: max(100vw, calc(100dvh * 1.8525));
   height: auto;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-aspect-ratio: 1/1) {
+  .early {
+    width: 340vw;
+    -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+    mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  }
 }
