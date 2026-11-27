@@ -3,75 +3,61 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: linear-gradient(#000 50%, #006345 50%);
+  background: linear-gradient(#0e83ac 50%, #07449f 50%);
 }
 
-.early {
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.stage {
   position: fixed;
   left: 50%;
   top: 50%;
-  display: block;
-  width: max(100vw, calc(100dvh * 1.8525));
-  height: auto;
+  width: max(100vw, calc(100dvh * 16 / 9));
+  aspect-ratio: 16 / 9;
   transform: translate(-50%, -50%);
 }
 
-.ring {
-  position: fixed;
-  right: 0;
-  bottom: 0;
+.art {
   display: block;
-  width: calc(max(100vw, 100dvh * 1.8525) * 0.2015);
-  height: auto;
-  overflow: visible;
-  animation: drift-ring 23s ease-in-out infinite alternate;
+  width: 100%;
+  height: 100%;
+}
+
+.back {
+  position: absolute;
+  left: 43%;
+  top: 64%;
+  width: 19%;
+  height: 6.5%;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+.back:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.back:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
 }
 
 @media (max-aspect-ratio: 1/1) {
-  .early {
-    width: 340vw;
+  .stage {
+    width: 170vw;
+    transform: translate(-50%, -50%);
+  }
+
+  .art {
     -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
     mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
   }
-
-  .ring {
-    width: 72vw;
-  }
-}
-
-.shape {
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-.shape-circle {
-  animation-name: drift-circle;
-  animation-duration: 17s;
-}
-
-.shape-quad {
-  transform-origin: 3900px 600px;
-  animation-name: drift-quad;
-  animation-duration: 29s;
-}
-
-@keyframes drift-circle {
-  50% { transform: translate(380px, 120px); }
-  100% { transform: translate(220px, 430px); }
-}
-
-@keyframes drift-ring {
-  50% { transform: translate(-3vw, -4vh); }
-  100% { transform: translate(-1vw, -9vh); }
-}
-
-@keyframes drift-quad {
-  50% { transform: translate(-300px, 260px) rotate(4deg); }
-  100% { transform: translate(-80px, 420px) rotate(-3deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .shape,
-  .ring { animation: none; }
 }
