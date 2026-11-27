@@ -17,20 +17,52 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <main>
   <h1 class="visually-hidden">Monarch. Fly back soon!</h1>
   <div class="stage">
-    <img class="layer background" src="assets/background.webp" width="3840" height="2160" alt="">
+    <div class="scene">
+      <img class="layer background" src="assets/background.webp" width="3840" height="2160" alt="">
+      <svg class="layer life" viewBox="0 0 3840 2160" aria-hidden="true">
+        <defs>
+          <radialGradient id="glint">
+            <stop offset="0" stop-color="#fff" stop-opacity="0.9"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle class="glint" cx="1370" cy="270" r="190" fill="url(#glint)"/>
+        <g class="ripples" fill="none" stroke="#0b3b8c">
+          <circle class="ripple" cx="2540" cy="600" r="330"/>
+          <circle class="ripple ripple-late" cx="2540" cy="600" r="330"/>
+          <circle class="ripple ripple-b" cx="3690" cy="880" r="300"/>
+          <circle class="ripple ripple-big" cx="3280" cy="2200" r="1050"/>
+        </g>
+        <g class="bubbles" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.22" stroke-width="5">
+          <circle class="bubble b1" cx="420" cy="1900" r="70"/>
+          <circle class="bubble b2" cx="900" cy="2050" r="42"/>
+          <circle class="bubble b3" cx="1500" cy="1980" r="95"/>
+          <circle class="bubble b4" cx="240" cy="2100" r="34"/>
+          <circle class="bubble b5" cx="1180" cy="2120" r="58"/>
+          <circle class="bubble b6" cx="1900" cy="2150" r="28"/>
+        </g>
+        <g class="sparks" fill="#fff">
+          <circle class="spark s1" cx="2050" cy="420" r="9"/>
+          <circle class="spark s2" cx="3420" cy="1350" r="7"/>
+          <circle class="spark s3" cx="700" cy="1150" r="8"/>
+          <circle class="spark s4" cx="2760" cy="1650" r="6"/>
+          <circle class="spark s5" cx="3550" cy="420" r="8"/>
+        </g>
+      </svg>
+    </div>
     <img class="layer star star-yellow" src="assets/star-yellow.webp" alt="">
     <img class="layer star star-green" src="assets/star-green.webp" alt="">
     <img class="layer star star-small" src="assets/star-small.webp" alt="">
     <img class="layer star star-blue" src="assets/star-blue.webp" alt="">
-    <span class="layer glide"><img class="flutter" src="assets/butterfly.webp" alt=""></span>
+    <span class="layer glide"><img src="assets/butterfly.webp" alt=""></span>
     <img class="layer title" src="assets/title.webp" alt="">
-    <a class="back" href="https://bloomnetworks.net" aria-label="Back to Bloom"></a>
+    <a class="layer back" href="https://bloomnetworks.net"><img src="assets/back.webp" alt="back to bloom"></a>
   </div>
 </main>
 </body>
