@@ -17,18 +17,50 @@ body {
 }
 
 .stage {
+  --size: max(100vw, calc(100dvh * 16 / 9));
   position: fixed;
   left: 50%;
   top: 50%;
-  width: max(100vw, calc(100dvh * 16 / 9));
+  width: var(--size);
   aspect-ratio: 16 / 9;
   transform: translate(-50%, -50%);
 }
 
-.art {
+.layer {
+  position: absolute;
   display: block;
+  max-width: none;
+  height: auto;
+}
+
+.background {
+  left: 0;
+  top: 0;
   width: 100%;
-  height: 100%;
+}
+
+.title {
+  left:31.354%; top:45.787%; width:45.547%
+}
+
+.glide {
+  left:23.151%; top:29.398%; width:15.443%
+}
+
+.star-yellow {
+  left:78.177%; top:37.917%; width:3.490%
+}
+
+.star-green {
+  left:74.062%; top:42.963%; width:2.370%
+}
+
+.star-small {
+  left:83.099%; top:47.639%; width:2.057%
+}
+
+.star-blue {
+  left:80.234%; top:51.898%; width:1.302%
 }
 
 .back {
@@ -50,14 +82,84 @@ body {
   outline-offset: 2px;
 }
 
+.glide img,
+.title {
+  will-change: transform;
+}
+
+.glide {
+  animation: glide 11s ease-in-out infinite;
+}
+
+.flutter {
+  display: block;
+  width: 100%;
+  transform-origin: 52% 55%;
+  animation: flutter 1.9s ease-in-out infinite;
+}
+
+.title {
+  animation: bob 6.5s ease-in-out infinite alternate;
+}
+
+.star {
+  animation: twinkle 3.4s ease-in-out infinite alternate;
+}
+
+.star-green {
+  animation-duration: 4.1s;
+  animation-delay: -1.2s;
+}
+
+.star-small {
+  animation-duration: 2.8s;
+  animation-delay: -2s;
+}
+
+.star-blue {
+  animation-duration: 3.7s;
+  animation-delay: -0.6s;
+}
+
+@keyframes glide {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(calc(var(--size) * -0.012), calc(var(--size) * -0.02)) rotate(-5deg); }
+  50% { transform: translate(calc(var(--size) * 0.01), calc(var(--size) * -0.033)) rotate(4deg); }
+  75% { transform: translate(calc(var(--size) * 0.02), calc(var(--size) * -0.012)) rotate(-3deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+@keyframes flutter {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.86); }
+}
+
+@keyframes bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(var(--size) * -0.007)); }
+}
+
+@keyframes twinkle {
+  from { transform: scale(0.82) rotate(-14deg); opacity: 0.75; }
+  to { transform: scale(1.18) rotate(16deg); opacity: 1; }
+}
+
 @media (max-aspect-ratio: 1/1) {
   .stage {
-    width: 170vw;
-    transform: translate(-50%, -50%);
+    --size: 170vw;
   }
 
-  .art {
+  .background {
     -webkit-mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
     mask-image: linear-gradient(transparent, #000 14%, #000 86%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glide,
+  .flutter,
+  .title,
+  .star {
+    animation: none;
   }
 }
